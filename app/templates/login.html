@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Connexion - TaskManager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title mb-0">
+                    <i class="fas fa-sign-in-alt"></i> Connexion
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('auth.login') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            <i class="fas fa-user"></i> Nom d'utilisateur
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                               required autofocus placeholder="Entrez votre nom d'utilisateur">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Mot de passe
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" 
+                               required placeholder="Entrez votre mot de passe">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Se connecter
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-3 text-center">
+                    <p class="mb-0">
+                        Nouveau utilisateur ? 
+                        <a href="{{ url_for('auth.register') }}" class="text-decoration-none">
+                            Créer un compte
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

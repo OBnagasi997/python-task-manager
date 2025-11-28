@@ -1,0 +1,204 @@
+name:  CD Python - Déploiement Windows
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  PYTHON_VERSION: '3.11'
+  PROJECT_NAME: 'python-task-manager'
+
+jobs:
+  test:
+    name: ' Tests et Validation'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: ' Checkout du code'
+      uses: actions/checkout@v4
+    
+    - name: ' Configuration Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: ' Installation des dépendances'
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+    
+    - name: ' Exécution des tests'
+      run: |
+        python -m pytest tests/ -v --cov=app --cov-report=xml
+    
+    - name: ' Upload coverage reports'
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  security-scan:
+    name: 'Analyse de Sécurité'
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: 'Checkout du code'
+      uses: actions/checkout@v4
+    
+    - name: 'Configuration Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: 'Installation bandit'
+      run: |
+        pip install bandit
+    
+    - name: ' Scan de sécurité'
+      run: |
+        bandit -r app/ -f html -o security-report.html || true
+    
+    - name: ' Audit des dépendances'
+      run: |
+        pip install safety
+        safety check --json --output safety-report.json || true
+
+  deploy-staging:
+    name: ' Déploiement Staging'
+    runs-on: ubuntu-latest
+    needs: [test, security-scan]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: ' Checkout du code'
+      uses: actions/checkout@v4
+    
+    - name: ' Configuration Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: ' Installation des dépendances'
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: ' Construction du package'
+      run: |
+        # Créer un dossier de déploiement propre
+        mkdir -p deployment-package/app/templates
+        mkdir -p deployment-package/tests
+        mkdir -p deployment-package/deploy
+        
+        # Copier les fichiers nécessaires
+        cp -r app/*.py deployment-package/app/
+        cp -r app/templates/* deployment-package/app/templates/
+        cp -r tests/ deployment-package/
+        cp -r deploy/ deployment-package/
+        cp requirements.txt runtime.txt config.py run.py deployment-package/
+        
+        # Créer un script de déploiement
+        cat > deployment-package/deploy.sh << 'EOF'
+        #!/bin/bash
+        echo "=== Script de déploiement ==="
+        # Script pour Linux (backup)
+        EOF
+        
+        echo " Package de déploiement créé"
+    
+    - name: ' Déploiement vers Staging Windows'
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        key: ${{ secrets.DEPLOY_KEY }}
+        source: "deployment-package/*"
+        target: "C:\\apps\\${{ env.PROJECT_NAME }}-staging"
+        strip_components: 1
+    
+    - name: ' Configuration sur le serveur'
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        key: ${{ secrets.DEPLOY_KEY }}
+        script: |
+          Write-Host "=== Configuration de l'environnement Python ==="
+          $stagingPath = "C:\apps\${{ env.PROJECT_NAME }}-staging"
+          $livePath = "C:\apps\${{ env.PROJECT_NAME }}-live"
+          
+          # Configuration Python
+          cd $stagingPath
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+          # Exécution des tests sur le serveur
+          Write-Host "→ Exécution des tests sur le serveur..."
+          python -m pytest tests/ -v
+          
+          # Préparation de la base de données
+          Write-Host "→ Configuration de la base de données..."
+          # Les migrations seraient exécutées ici
+          
+          Write-Host " Configuration staging terminée"
+
+  deploy-production:
+    name: ' Déploiement Production'
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: ' Déploiement vers Production'
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        key: ${{ secrets.DEPLOY_KEY }}
+        script: |
+          $stagingPath = "C:\apps\${{ env.PROJECT_NAME }}-staging"
+          $livePath = "C:\apps\${{ env.PROJECT_NAME }}-live"
+          $backupPath = "C:\apps\${{ env.PROJECT_NAME }}-backup"
+          
+          Write-Host "=== DÉPLOIEMENT PRODUCTION ==="
+          Write-Host "→ Sauvegarde de la version actuelle..."
+          
+          # Sauvegarder l'ancienne version
+          if (Test-Path $livePath) {
+            if (Test-Path $backupPath) { 
+                Remove-Item $backupPath -Recurse -Force 
+            }
+            Rename-Item $livePath (Split-Path $backupPath -Leaf)
+          }
+          
+          # Déployer la nouvelle version
+          Write-Host "→ Déploiement de la nouvelle version..."
+          Rename-Item $stagingPath (Split-Path $livePath -Leaf)
+          
+          # Configuration finale
+          cd $livePath
+          Write-Host "→ Installation des dépendances production..."
+          pip install -r requirements.txt
+          
+          # Démarrer l'application
+          Write-Host "→ Démarrage de l'application..."
+          # Arrêter l'ancien processus si existant
+          Get-Process -Name "python" -ErrorAction SilentlyContinue | Stop-Process -Force
+          
+          # Démarrer avec Waitress
+          Start-Process -NoNewWindow -FilePath "python" `
+            -ArgumentList "-m waitress --port=8000 --call `"run:main`"" `
+            -WorkingDirectory $livePath
+          
+          Write-Host " Déploiement production terminé avec succès!"
+          Write-Host " Application disponible sur: http://localhost:8000"
+          
+          # Vérification du déploiement
+          Start-Sleep -Seconds 5
+          $healthCheck = Invoke-WebRequest "http://localhost:8000/health" -UseBasicParsing
+          Write-Host " Health check: $($healthCheck.StatusCode)"

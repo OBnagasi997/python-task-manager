@@ -1,0 +1,78 @@
+2025-11-28 20:12:09,398 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2025-11-28 20:12:09,399 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-11-28 20:12:09,402 INFO werkzeug  * Restarting with stat
+2025-11-28 20:12:10,735 WARNING werkzeug  * Debugger is active!
+2025-11-28 20:12:10,747 INFO werkzeug  * Debugger PIN: 144-353-826
+2025-11-28 20:12:23,803 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:23] "GET / HTTP/1.1" 200 -
+2025-11-28 20:12:24,145 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-28 20:12:33,996 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:33] "GET / HTTP/1.1" 200 -
+2025-11-28 20:12:35,501 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:35] "GET / HTTP/1.1" 200 -
+2025-11-28 20:12:43,443 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:43] "GET /auth/register HTTP/1.1" 200 -
+2025-11-28 20:12:49,638 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:12:49] "GET /auth/login HTTP/1.1" 200 -
+2025-11-28 20:15:38,983 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:15:38] "POST /auth/login HTTP/1.1" 200 -
+2025-11-28 20:16:15,832 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:16:15] "POST /auth/login HTTP/1.1" 200 -
+2025-11-28 20:16:20,773 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:16:20] "GET /auth/register HTTP/1.1" 200 -
+2025-11-28 20:16:59,200 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:16:59] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+2025-11-28 20:16:59,208 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:16:59] "GET /auth/login HTTP/1.1" 200 -
+2025-11-28 20:17:10,813 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:17:10] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-11-28 20:17:10,825 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:17:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 20:17:10,865 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:17:10] "GET /tasks HTTP/1.1" 200 -
+2025-11-28 20:17:11,074 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:17:11] "GET /static/js/tasks.js HTTP/1.1" 200 -
+2025-11-28 20:17:11,092 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 20:17:11] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:31:17,740 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2025-11-28 21:31:17,742 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-11-28 21:31:17,746 INFO werkzeug  * Restarting with stat
+2025-11-28 21:31:19,356 WARNING werkzeug  * Debugger is active!
+2025-11-28 21:31:19,365 INFO werkzeug  * Debugger PIN: 144-353-826
+2025-11-28 21:31:32,690 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:32] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 21:31:32,932 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:32] "GET /tasks HTTP/1.1" 200 -
+2025-11-28 21:31:33,180 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:33] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
+2025-11-28 21:31:33,231 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:33] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:31:37,130 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:37] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:31:37,348 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:37] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:31:38,237 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:38] "GET /api/tasks?status=pending HTTP/1.1" 200 -
+2025-11-28 21:31:39,036 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:39] "GET /api/tasks?status=in_progress HTTP/1.1" 200 -
+2025-11-28 21:31:39,764 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:39] "GET /api/tasks?status=completed HTTP/1.1" 200 -
+2025-11-28 21:31:41,069 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:31:41] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:42:28,022 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:42:28] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:42:28,034 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:42:28] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:43:27,003 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:43:27] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:43:27,018 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:43:27] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:44:18,718 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:18] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:44:18,744 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:18] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:44:38,578 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:38] "[31m[1mGET /api/tasks/3 HTTP/1.1[0m" 405 -
+2025-11-28 21:44:46,331 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:46] "[31m[1mGET /api/tasks/3 HTTP/1.1[0m" 405 -
+2025-11-28 21:44:56,571 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:56] "DELETE /api/tasks/3 HTTP/1.1" 200 -
+2025-11-28 21:44:56,605 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:44:56] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:45:32,548 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:45:32] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:45:32,559 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:45:32] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:47:12,649 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:47:12] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:47:12,662 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:47:12] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:48:03,128 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:48:03] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:48:03,140 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:48:03] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:58:08,296 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:08] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:58:08,309 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:08] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:58:14,373 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:14] "GET /api/tasks?status=pending HTTP/1.1" 200 -
+2025-11-28 21:58:15,397 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:15] "GET /api/tasks?status=in_progress HTTP/1.1" 200 -
+2025-11-28 21:58:16,413 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:16] "GET /api/tasks?status=completed HTTP/1.1" 200 -
+2025-11-28 21:58:17,507 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:17] "GET /api/tasks?status=pending HTTP/1.1" 200 -
+2025-11-28 21:58:18,541 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:58:18] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:59:37,209 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:59:37] "[35m[1mPOST /api/tasks HTTP/1.1[0m" 201 -
+2025-11-28 21:59:37,225 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:59:37] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 21:59:46,649 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:59:46] "PUT /api/tasks/7 HTTP/1.1" 200 -
+2025-11-28 21:59:46,671 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 21:59:46] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 22:00:09,484 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:09] "PUT /api/tasks/7 HTTP/1.1" 200 -
+2025-11-28 22:00:09,494 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:09] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 22:00:12,989 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:12] "GET /api/tasks?status=completed HTTP/1.1" 200 -
+2025-11-28 22:00:16,280 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:16] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 22:00:19,850 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:19] "[31m[1mGET /api/tasks/7 HTTP/1.1[0m" 405 -
+2025-11-28 22:00:23,577 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:23] "PUT /api/tasks/7 HTTP/1.1" 200 -
+2025-11-28 22:00:23,588 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:23] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 22:00:30,139 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:30] "GET /api/tasks?status=completed HTTP/1.1" 200 -
+2025-11-28 22:00:33,449 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:00:33] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-28 22:01:41,667 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:01:41,690 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "GET /tasks HTTP/1.1" 200 -
+2025-11-28 22:01:41,720 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
+2025-11-28 22:01:41,770 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "GET /api/tasks HTTP/1.1" 200 -

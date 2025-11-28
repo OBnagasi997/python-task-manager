@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Mes Tâches - TaskManager{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2><i class="fas fa-tasks"></i> Mes Tâches</h2>
+    </div>
+    <div class="col-md-4 text-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#taskModal">
+            <i class="fas fa-plus"></i> Nouvelle Tâche
+        </button>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary filter-btn" data-status="">
+                Toutes
+            </button>
+            <button type="button" class="btn btn-outline-warning filter-btn" data-status="pending">
+                En attente
+            </button>
+            <button type="button" class="btn btn-outline-info filter-btn" data-status="in_progress">
+                En cours
+            </button>
+            <button type="button" class="btn btn-outline-success filter-btn" data-status="completed">
+                Terminées
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4" id="tasks-container">
+    <!-- Les tâches seront chargées ici via JavaScript -->
+</div>
+
+<!-- Modal pour créer/modifier une tâche -->
+<div class="modal fade" id="taskModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Nouvelle Tâche</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="taskForm">
+                <div class="modal-body">
+                    <input type="hidden" id="taskId">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titre *</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="priority" class="form-label">Priorité</label>
+                            <select class="form-select" id="priority">
+                                <option value="1">Faible</option>
+                                <option value="2" selected>Normale</option>
+                                <option value="3">Élevée</option>
+                                <option value="4">Urgente</option>
+                                <option value="5">Critique</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="due_date" class="form-label">Échéance</label>
+                            <input type="datetime-local" class="form-control" id="due_date">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+{% endblock %}
