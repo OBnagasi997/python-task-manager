@@ -76,3 +76,21 @@
 2025-11-28 22:01:41,690 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "GET /tasks HTTP/1.1" 200 -
 2025-11-28 22:01:41,720 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
 2025-11-28 22:01:41,770 INFO werkzeug 127.0.0.1 - - [28/Nov/2025 22:01:41] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-29 11:10:18,439 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2025-11-29 11:10:18,440 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-11-29 11:10:18,443 INFO werkzeug  * Restarting with stat
+2025-11-29 11:10:19,802 WARNING werkzeug  * Debugger is active!
+2025-11-29 11:10:19,809 INFO werkzeug  * Debugger PIN: 144-353-826
+2025-11-29 11:10:27,615 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:10:27] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-29 11:10:27,883 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:10:27] "GET /tasks HTTP/1.1" 200 -
+2025-11-29 11:10:28,205 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:10:28] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
+2025-11-29 11:10:28,243 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:10:28] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-29 11:11:07,614 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:07] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-29 11:11:07,648 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:07] "GET /tasks HTTP/1.1" 200 -
+2025-11-29 11:11:07,704 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:07] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
+2025-11-29 11:11:07,751 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:07] "GET /api/tasks HTTP/1.1" 200 -
+2025-11-29 11:11:36,336 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:36] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-29 11:11:36,400 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:36] "GET /tasks HTTP/1.1" 200 -
+2025-11-29 11:11:36,431 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:36] "[36mGET /static/js/tasks.js HTTP/1.1[0m" 304 -
+2025-11-29 11:11:36,468 INFO werkzeug 127.0.0.1 - - [29/Nov/2025 11:11:36] "GET /api/tasks HTTP/1.1" 200 -
